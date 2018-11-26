@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    tools:context=".ResetPwdActivity">
+
+    <RelativeLayout
+
+        android:id="@+id/resetRelLayout"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+
+        android:visibility="visible">
+
+        <TextView
+
+            android:id="@+id/resettextView"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginTop="56dp"
+
+            android:background="@color/colorPrimaryDark"
+
+            android:gravity="center"
+
+            android:padding="16dp"
+
+            android:paddingLeft="32dp"
+
+            android:paddingRight="32dp"
+
+            android:text="Forgot Password?"
+
+            android:textAppearance="?android:textAppearanceMedium"
+
+            android:textColor="@android:color/white" />
+
+
+        <EditText
+
+            android:id="@+id/resetEmailEditText"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/resettextView"
+
+            android:layout_marginLeft="24dp"
+
+            android:layout_marginTop="16dp"
+
+            android:layout_marginRight="24dp"
+
+            android:background="@android:color/white"
+
+            android:drawableLeft="@drawable/emailimg"
+
+            android:gravity="center"
+
+            android:hint="Enter your Registered E-mail id"
+
+            android:inputType="textEmailAddress"
+
+            android:padding="8dp"
+
+            android:textAppearance="?android:textAppearanceSmall" />
+
+
+        <Button
+
+            android:id="@+id/resetPwdButton"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/resetEmailEditText"
+
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginTop="16dp"
+
+            android:background="@color/colorPrimaryDark"
+
+            android:onClick="resetPwd"
+
+            android:padding="8dp"
+
+            android:text="Send me a Reset Password Link"
+
+            android:textColor="@android:color/white" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+
+        android:id="@+id/inProcessLayout3"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+
+        android:gravity="center"
+
+        android:orientation="vertical"
+
+        android:visibility="invisible">
+
+        <TextView
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+
+            android:text="Processing request, Please wait..."
+
+            android:textAppearance="?android:textAppearanceLarge"
+
+            android:textColor="@color/colorPrimaryDark" />
+
+        <ProgressBar
+
+            android:id="@+id/progressBar3"
+
+            style="?android:attr/progressBarStyle"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
