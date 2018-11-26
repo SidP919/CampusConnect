@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         if (currentUser != null) {
             Intent intent = new Intent(this, TestActivity.class);
             startActivity(intent);
+            Toast.makeText(LoginActivity.this, "Welcome Back", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -107,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                         intn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intn);
                         finish();
-                        Toast.makeText(LoginActivity.this, "Welcome to ABC college", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Welcome to JSS ATE, NOIDA", Toast.LENGTH_SHORT).show();
 
                     } else {
 
