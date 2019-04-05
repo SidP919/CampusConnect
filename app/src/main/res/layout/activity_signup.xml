@@ -49,10 +49,9 @@
 
             android:textColor="@android:color/white" />
 
-
         <EditText
 
-            android:id="@+id/signupEmailEditText"
+            android:id="@+id/signupNameEditText"
 
             android:layout_width="match_parent"
 
@@ -68,13 +67,77 @@
 
             android:background="@android:color/white"
 
+            android:drawableLeft="@drawable/profile_icon"
+
+            android:ems="10"
+
+            android:gravity="center"
+
+            android:hint="Enter your Name"
+
+            android:inputType="textEmailAddress"
+
+            android:padding="16dp"
+
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <EditText
+
+            android:id="@+id/signupRollNoEditText"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/signupNameEditText"
+
+            android:layout_marginLeft="24dp"
+
+            android:layout_marginTop="16dp"
+
+            android:layout_marginRight="24dp"
+
+            android:background="@android:color/white"
+
+            android:drawableLeft="@drawable/roll_no_icon"
+
+            android:ems="10"
+
+            android:gravity="center"
+
+            android:hint="Enter your Roll number"
+
+            android:inputType="textEmailAddress"
+
+            android:padding="16dp"
+
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <EditText
+
+            android:id="@+id/signupEmailEditText"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/signupRollNoEditText"
+
+            android:layout_marginLeft="24dp"
+
+            android:layout_marginTop="16dp"
+
+            android:layout_marginRight="24dp"
+
+            android:background="@android:color/white"
+
             android:drawableLeft="@drawable/emailimg"
 
             android:ems="10"
 
             android:gravity="center"
 
-            android:hint="Enter an e-mail id"
+            android:hint="Enter your E-mail id"
 
             android:inputType="textEmailAddress"
 

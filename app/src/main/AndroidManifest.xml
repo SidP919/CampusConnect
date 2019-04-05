@@ -19,7 +19,11 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".ResetPwdActivity" />
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".TestActivity" />
+        <activity
+            android:name=".HomeNavActivity"
+            android:label="@string/title_activity_home_nav"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

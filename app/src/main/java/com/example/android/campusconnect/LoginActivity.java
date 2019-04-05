@@ -48,7 +48,8 @@ public class LoginActivity extends AppCompatActivity {
         fa = FirebaseAuth.getInstance();
         FirebaseUser currentUser = fa.getCurrentUser();
         if (currentUser != null) {
-            Intent intent = new Intent(this, TestActivity.class);
+            Intent intent = new Intent(this, HomeNavActivity.class);
+//            intent.putExtra("userEmail",currentUser.getEmail());
             startActivity(intent);
             Toast.makeText(LoginActivity.this, "Welcome Back", Toast.LENGTH_SHORT).show();
         }
@@ -81,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
 
         hideSoftKeyboard(v);
 
-        String s1 = et1.getText().toString();
+        final String s1 = et1.getText().toString();
 
         String s2 = et2.getText().toString();
 
@@ -104,8 +105,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()) {
 
-                        Intent intn = new Intent(LoginActivity.this, TestActivity.class);
+                        Intent intn = new Intent(LoginActivity.this, HomeNavActivity.class);
                         intn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        intn.putExtra("userEmail",s1);
                         startActivity(intn);
                         finish();
                         Toast.makeText(LoginActivity.this, "Welcome to JSS ATE, NOIDA", Toast.LENGTH_SHORT).show();
