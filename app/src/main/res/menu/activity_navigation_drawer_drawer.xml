@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:text="JSS Academy of Technical Education"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" /><item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/note"
+            android:title="All Notices" />
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/ic_launcher_foreground"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="My profile" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/key"
+            android:title="Change Password" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>
