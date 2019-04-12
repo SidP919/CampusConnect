@@ -112,7 +112,7 @@ public class SignupActivity extends AppCompatActivity {
                             FireBaseDBUtils.getInstance().addUser(new User(s3, s4, s1, s5));
                             Toast.makeText(SignupActivity.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(SignupActivity.this, "Welcome to ABC college", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(SignupActivity.this, "Welcome to JSS ATE, NOIDA", Toast.LENGTH_SHORT).show();
 
                             Intent intn = new Intent(SignupActivity.this, MainActivity.class);
 

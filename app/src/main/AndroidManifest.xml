@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.campusconnect">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,7 +25,11 @@
         <activity
             android:name=".HomeNavActivity"
             android:label="@string/title_activity_home_nav"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MyProfileActivity" />
+        <activity android:name=".DeleteAccountActivity" />
+        <activity android:name=".AddNoticeActivity" />
+        <activity android:name=".ShowNoticeActivity"></activity>
     </application>
 
 </manifest>

@@ -71,7 +71,7 @@
 
             android:gravity="center"
 
-            android:hint="Enter your Registered E-mail id"
+            android:hint="Enter the Registered E-mail id"
 
             android:inputType="textEmailAddress"
 

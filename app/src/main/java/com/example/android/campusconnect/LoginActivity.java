@@ -2,7 +2,10 @@ package com.example.android.campusconnect;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -27,6 +30,36 @@ public class LoginActivity extends AppCompatActivity {
 
     LinearLayout inProcessLayout;
 
+    String s1 = "";
+
+    public static boolean isNetworkConnected(Context ctx) {
+        ConnectivityManager cm = (ConnectivityManager) ctx
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+
+        return ni != null && ni.isConnectedOrConnecting();
+    }
+
+    public void hideSoftKeyboard(View view)
+
+    {
+
+        InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+    }
+
+    public void goToSignUpActivity(View v) {
+
+        hideSoftKeyboard(v);
+
+        Intent intn = new Intent(LoginActivity.this, SignupActivity.class);
+
+        startActivity(intn);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,41 +81,46 @@ public class LoginActivity extends AppCompatActivity {
         fa = FirebaseAuth.getInstance();
         FirebaseUser currentUser = fa.getCurrentUser();
         if (currentUser != null) {
-            Intent intent = new Intent(this, HomeNavActivity.class);
-//            intent.putExtra("userEmail",currentUser.getEmail());
-            startActivity(intent);
-            Toast.makeText(LoginActivity.this, "Welcome Back", Toast.LENGTH_SHORT).show();
+
+            if (!isNetworkConnected(getApplicationContext())) {
+                Toast.makeText(LoginActivity.this,
+                        "Provide internet connection and try again",
+                        Toast.LENGTH_LONG).show();
+                return;
+            } else {
+                FireBaseDBUtils.getInstance().getUser(currentUser.getEmail());
+
+                loginLayout.setVisibility(View.INVISIBLE);
+
+                inProcessLayout.setVisibility(View.VISIBLE);
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Do something below after 5000ms
+                        //sgdsfds
+                        Intent intn = new Intent(LoginActivity.this, HomeNavActivity.class);
+                        startActivity(intn);
+                        finish();
+                        Toast.makeText(LoginActivity.this, "Welcome Back", Toast.LENGTH_SHORT).show();
+                    }
+                }, 8000);
+            }
         }
     }
 
-
-    public void hideSoftKeyboard(View view)
-
-    {
-
-        InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-    }
-
-
-    public void goToSignUpActivity(View v) {
-
-        hideSoftKeyboard(v);
-
-        Intent intn = new Intent(LoginActivity.this, SignupActivity.class);
-
-        startActivity(intn);
-
-    }
-
-
     public void login(View v) {
+        if (!isNetworkConnected(getApplicationContext())) {
+            Toast.makeText(LoginActivity.this,
+                    "Provide internet connection and try again",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         hideSoftKeyboard(v);
 
-        final String s1 = et1.getText().toString();
+        s1 = et1.getText().toString();
 
         String s2 = et2.getText().toString();
 
@@ -102,45 +140,42 @@ public class LoginActivity extends AppCompatActivity {
 
                 public void onComplete(Task<AuthResult> task) {
 
-
                     if (task.isSuccessful()) {
 
-                        Intent intn = new Intent(LoginActivity.this, HomeNavActivity.class);
-                        intn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                        intn.putExtra("userEmail",s1);
-                        startActivity(intn);
-                        finish();
-                        Toast.makeText(LoginActivity.this, "Welcome to JSS ATE, NOIDA", Toast.LENGTH_SHORT).show();
+                        FireBaseDBUtils.getInstance().getUser(s1);
+
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Do something below after 5000ms
+                                //sgdsfds
+                                Intent intn = new Intent(LoginActivity.this, HomeNavActivity.class);
+                                startActivity(intn);
+                                finish();
+                                Toast.makeText(LoginActivity.this, "Welcome to JSS ATE, NOIDA", Toast.LENGTH_SHORT).show();
+                            }
+                        }, 10000);
 
                     } else {
 
                         Toast.makeText(LoginActivity.this, "Login Failed! Check your E-mail id and password", Toast.LENGTH_SHORT).show();
 
-                        Toast.makeText(LoginActivity.this, "Also, Check your internet connection and try again", Toast.LENGTH_SHORT).show();
+                        loginLayout.setVisibility(View.VISIBLE);
+
+                        inProcessLayout.setVisibility(View.INVISIBLE);
 
                     }
-
-                    loginLayout.setVisibility(View.VISIBLE);
-
-                    inProcessLayout.setVisibility(View.INVISIBLE);
-
                 }
 
             });
-
         }
-
     }
-
 
     public void resetPwd(View v) {
 
         hideSoftKeyboard(v);
-
         Intent intn = new Intent(LoginActivity.this, ResetPwdActivity.class);
-
         startActivity(intn);
-
     }
-
 }
